@@ -24,7 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // 设置路由
 //routes.set(app);
 app.use('/', routes);
-app.use('/users', users);
+//app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
