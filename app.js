@@ -1,9 +1,11 @@
 var express = require('express');
 var path = require('path');
+var url = require('url');
 //var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
 
 var routes = require('./routes/base');
 
@@ -11,6 +13,7 @@ var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, '/views'));
+app.set('trust proxy', 1); // trust first proxy
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 // uncomment after placing your favicon in /public
@@ -20,7 +23,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(session({ secret: 'yizhicheng', cookie: { maxAge: 60000 }}));
+// session 处理
+app.use(function (req, res, next){
+    var s = req.session;
+    res.locals.userinfo = s && s.userinfo ? s.userinfo : '';
+    res.locals.pathname = url.parse(req.url).pathname;
+    console.log(res.locals.pathname);
+    next();
+});
 // 设置路由
 //routes.set(app);
 app.use('/', routes);

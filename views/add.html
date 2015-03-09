@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <!-- Bootstrap -->
+    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet" media="screen">
+    <style>
+        .red{
+            color: red;
+        }
+    </style>
+    <!-- <link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen"> -->
+</head>
+<body screen_capture_injected="true">
+<% include nav.html %>
+<div class="container-fluid" style="margin-top: 50px;">
+    <div class="row-fluid">
+        <% include left_bar.html %>
+        <div class="span9">
+            <form class="form-horizontal">
+                <fieldset>
+                    <legend>添加账户</legend>
+                    <div class="alert alert-success" id="alert_success" style="display: none;">
+                        账户 <strong></strong> 信息已经添加到
+                        <a href="/manageAccount/list">账户列表</a>中！
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="account_name">账户名称</label>
+                        <div class="controls">
+                            <input id="account_name" type="text" placeholder="账户名称">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="account_id">账户帐号</label>
+                        <div class="controls">
+                            <input id="account_id" type="text" placeholder="账户帐号">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="account_password">账户密码</label>
+                        <div class="controls">
+                            <input id="account_password" type="text" placeholder="账户密码">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="account_password">描述</label>
+                        <div class="controls">
+                            <textarea id="account_description" type="text" rows="5"></textarea>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <button type="submit" class="btn btn-primary">添加</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div><!--/span-->
+    </div><!--/row-->
+    <hr>
+    <footer>
+        <p>© Company 2013</p>
+    </footer>
+</div><!--/.fluid-container-->
+<script src="/javascripts/jquery-1.7.1.min.js"></script>
+<script src="/javascripts/bootstrap.min.js"></script>
+<script>
+    $(function(){
+        $("form").on('submit', function(event){
+            event.preventDefault();
+            addAccount($(this));
+        });
+        function addAccount(form){
+            var account_name = $("#account_name").val();
+            var account_id = $("#account_id").val();
+            var account_password = $("#account_password").val();
+            var account_description = $("#account_description").val();
+            var data = "account_name="+account_name
+                    +"&account_id="+account_id
+                    +"&account_password="+account_password
+                    +"&account_description="+account_description;
+            $.ajax({
+                url: '/manageAccount/doAdd',
+                data: data,
+                dataType: 'json',
+                type: 'POST',
+                success: function(result){
+                    var tip = $("#alert_success");
+                    if(!result.error) {
+                        //alert('kkk')
+                        tip.find("strong").text(account_name);
+                        tip.show();
+                        $("[type='submit']").addClass("disabled");
+                        setTimeout(function(){
+                            location.href = '/manageAccount/list';
+                        }, 3000);
+                    }
+                }
+            });
+        }
+    });
+</script>
+</body>
+</html>

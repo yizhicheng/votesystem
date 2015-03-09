@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <!-- Bootstrap -->
+    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet" media="screen">
+    <style>
+        #login_form {
+            width: 338px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            -webkit-border-radius: 5px;
+            margin: 50px auto
+        }
+    </style>
+    <!-- <link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen"> -->
+</head>
+<body screen_capture_injected="true">
+<div class="container-fluid" style="width: 600px;margin: 0 auto;">
+    <form id="login_form" class="form-signin">
+        <h2 class="form-signin-heading">用户登录</h2>
+        <input type="text" class="input-block-level" id="account" placeholder="请输入帐号">
+        <input type="password" class="input-block-level" id="password" placeholder="请输入密码">
+        <label class="checkbox">
+            <input type="checkbox" value="remember-me"> 记住我哟
+        </label>
+        <button class="btn btn-large btn-primary" type="submit">Sign in</button>
+    </form>
+</div>
+<script src="/javascripts/jquery-1.7.1.min.js"></script>
+<script src="/javascripts/bootstrap.min.js"></script>
+<script>
+    $(function(){
+        $("form").on('submit', function(event){
+            event.preventDefault();
+            onLogin($(this));
+        });
+    });
+    function onLogin(form){
+        var username = $("#account").val();
+        var password = $("#password").val();
+        var data = "username="+username+"&password="+password;
+        $.ajax({
+            url: '/doLogin',
+            data: data,
+            type: 'POST',
+            dataType: 'json',
+            success: function(result){
+                if(!result.error){
+                    //登录成功
+                    location.href = "/home";
+                } else {
+                    location.href = "/login";
+                }
+            }
+        });
+    }
+</script>
+</body>
+</html>

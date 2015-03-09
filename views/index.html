@@ -1,60 +1,31 @@
-<html>
-<% include head.html %>
-<body>
-<div class="container-fluid">
-  <% include header.html %>
-  <div class="row-fluid">
-	<% include left_nav.html %>
-	<div class="span9">
-	  <div class="hero-unit">
-		<h1>密码管理系统</h1>
-		<p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-		<p><a href="#" class="btn btn-primary btn-large">Learn more »</a></p>
-	  </div>
-	  <div class="row-fluid">
-		<div class="span4">
-		  <h2>Heading</h2>
-		  <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-		  <p><a class="btn" href="#">View details »</a></p>
-		</div><!--/span-->
-		<div class="span4">
-		  <h2>Heading</h2>
-		  <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-		  <p><a class="btn" href="#">View details »</a></p>
-		</div><!--/span-->
-		<div class="span4">
-		  <h2>Heading</h2>
-		  <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-		  <p><a class="btn" href="#">View details »</a></p>
-		</div><!--/span-->
-	  </div><!--/row-->
-	  <div class="row-fluid">
-		<div class="span4">
-		  <h2>Heading</h2>
-		  <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-		  <p><a class="btn" href="#">View details »</a></p>
-		</div><!--/span-->
-		<div class="span4">
-		  <h2>Heading</h2>
-		  <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-		  <p><a class="btn" href="#">View details »</a></p>
-		</div><!--/span-->
-		<div class="span4">
-		  <h2>Heading</h2>
-		  <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-		  <p><a class="btn" href="#">View details »</a></p>
-		</div><!--/span-->
-	  </div><!--/row-->
-	</div><!--/span-->
-  </div><!--/row-->
-
-  <hr>
-
-  <footer>
-	<p>© Company 2013</p>
-  </footer>
-
-</div>
-<% include footer.html %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <!-- Bootstrap -->
+    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet" media="screen">
+    <!-- <link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen"> -->
+</head>
+<body screen_capture_injected="true">
+<% include nav.html %>
+<div class="container-fluid" style="margin-top: 50px;">
+    <div class="row-fluid">
+        <div class="span9">
+            <div class="hero-unit">
+                <h1>密码管理系统</h1>
+                <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+                <p><a href="/manageAccount/list" class="btn btn-primary btn-large">尝试玩玩o(∩_∩)o</a></p>
+            </div>
+        </div><!--/span-->
+    </div><!--/row-->
+    <hr>
+    <footer>
+        <p>© Company 2013</p>
+    </footer>
+</div><!--/.fluid-container-->
+<script src="/javascripts/jquery-1.7.1.min.js"></script>
+<script src="/javascripts/bootstrap.min.js"></script>
 </body>
 </html>

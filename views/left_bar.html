@@ -1,0 +1,11 @@
+<div class="span3">
+    <div class="well sidebar-nav">
+        <ul class="nav nav-list">
+            <li class="nav-header">账户管理</li>
+            <li <% if(locals.pathname == '/manageAccount/list') { %> class="active" <% } %> ><a href="/manageAccount/list">账户列表</a></li>
+            <% if(locals.userinfo){ %>
+            <li <% if(locals.pathname == '/manageAccount/add') { %> class="active" <% } %> ><a href="/manageAccount/add">新增账户</a></li>
+            <% } %>
+        </ul>
+    </div><!--/.well -->
+</div><!--/span-->
