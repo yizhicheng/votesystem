@@ -30,29 +30,28 @@ DataBase.prototype = {
         client.end();
     },
     /**
-     * arguments [1.table name 2.fields name , 3.values, 4.callback 回调函数]
+     * arguments [1.table name 2.obj[表模型] , 3.callback 回调函数]
      */
     insert: function() {
         var sql = "INSERT INTO " + arguments[0] ;
-        var value = " (";
-        for(var i=0; i<arguments[2].length; i++){
-            if(typeof arguments[2][i] === 'string'){
-                value += "'" +arguments[2][i]+ "'";
-            } else {
-                value += arguments[2][i];
+        var keys = [];
+        var values = [];
+        for(var key in arguments[1]){
+            //console.log(arguments[1][key]);
+            var value = arguments[1][key];
+            if (typeof value == 'function') continue;
+            if(value!=undefined){
+                keys.push(key);
+                if(typeof value == 'string'){
+                    value = '"'+value+'"';
+                }
+                values.push(value);
             }
-            if(i<arguments[2].length-1){
-                value += ",";
-            }
-        }
-        value += ")";
-        var field = arguments[1] ? "(" + arguments[1].join(",") + ")" : '';
-        sql += field + " VALUES " + value ;
-        //console.log(sql);
-        var callback = arguments[3]
+        };
+        sql += ' ('+keys.join(',')+') VALUES ('+values.join(',')+')';
+        var callback = arguments[2];
         this.query(sql,function(res){
             console.log("INSERT Return ==> ");
-            console.log(res);
             console.log(callback);
             if(callback){
                 callback(res);

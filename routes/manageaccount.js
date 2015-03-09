@@ -1,3 +1,4 @@
+var AccountInfo = require('../moulds/accountinfo');
 exports.set = function(router) {
     router.get('/manageAccount/list', function (req, res, next) {
         db.query('select * from account_info', function (accounts, fields) {
@@ -15,8 +16,11 @@ exports.set = function(router) {
                 req.body.account_password || '1',
                 req.body.account_description || '1'
         ];
+        var accountInfo = new AccountInfo();
+        accountInfo.setProperties(req);
+        console.log(accountInfo);
         //组织数据准备入库
-        db.insert('account_info', ['account_name', 'account_id', 'account_password', 'account_description'], data, function (resp) {
+        db.insert('account_info', accountInfo.getProperties(), function (resp) {
             var result = {};
             if (resp.affectedRows == 1) {
                 result = {error: false, msg: "入库成功", code: 200};

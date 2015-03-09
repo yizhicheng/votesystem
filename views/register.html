@@ -53,24 +53,13 @@
 </div>
 <script src="/javascripts/jquery-1.7.1.min.js"></script>
 <script src="/javascripts/bootstrap.min.js"></script>
+<script src="/javascripts/common.js"></script>
 <script>
     $(function(){
         $("form").on('submit', function(event){
             event.preventDefault();
             register($(this));
         });
-        function jumpLink(url,num){
-            var num = num || 5;
-            var jump = setInterval(function(){
-                var jumpTo = $('#jumpTo');
-                num--;
-                if(num<=1){
-                    clearInterval(jump);
-                    location.href = url;
-                }
-                jumpTo.text(num);
-            },1000);
-        }
         function register(form){
             var username = $("#username").val();
             var password = $("#password").val();

@@ -21,6 +21,10 @@
 <body screen_capture_injected="true">
 <div class="container-fluid" style="width: 600px;margin: 0 auto;">
     <form id="login_form" class="form-signin">
+        <div class="alert alert-error" id="" style="display: none;">
+            <strong>登录失败！</strong>
+            检查用户名、密码
+        </div>
         <h2 class="form-signin-heading">用户登录</h2>
         <input type="text" class="input-block-level" id="account" placeholder="请输入帐号">
         <input type="password" class="input-block-level" id="password" placeholder="请输入密码">
@@ -33,31 +37,32 @@
 <script src="/javascripts/jquery-1.7.1.min.js"></script>
 <script src="/javascripts/bootstrap.min.js"></script>
 <script>
-    $(function(){
-        $("form").on('submit', function(event){
-            event.preventDefault();
-            onLogin($(this));
-        });
+  $(function(){
+    $("form").on('submit', function(event){
+      event.preventDefault();
+      onLogin($(this));
     });
-    function onLogin(form){
-        var username = $("#account").val();
-        var password = $("#password").val();
-        var data = "username="+username+"&password="+password;
-        $.ajax({
-            url: '/doLogin',
-            data: data,
-            type: 'POST',
-            dataType: 'json',
-            success: function(result){
-                if(!result.error){
-                    //登录成功
-                    location.href = "/home";
-                } else {
-                    location.href = "/login";
-                }
-            }
-        });
-    }
+  });
+  function onLogin(form){
+    var username = $("#account").val();
+    var password = $("#password").val();
+    var data = "username="+username+"&password="+password;
+    $.ajax({
+      url: '/doLogin',
+      data: data,
+      type: 'POST',
+      dataType: 'json',
+      success: function(result){
+        if(!result.error){
+            //登录成功
+            location.href = "/home";
+        } else {
+            $('.alert-error').show();
+            //location.href = "/login";
+        }
+      }
+    });
+  }
 </script>
 </body>
 </html>
