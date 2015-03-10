@@ -10,16 +10,10 @@ exports.set = function(router) {
         res.render('add', { title: '添加账户'});
     });
     router.all('/manageAccount/doAdd', function (req, res, next) {
-        var data = [
-                req.body.account_name || '1',
-                req.body.account_id || '1',
-                req.body.account_password || '1',
-                req.body.account_description || '1'
-        ];
         var accountInfo = new AccountInfo();
         accountInfo.setProperties(req);
-        console.log(accountInfo);
-        //组织数据准备入库
+        // console.log(accountInfo);
+        // 组织数据准备入库
         db.insert('account_info', accountInfo.getProperties(), function (resp) {
             var result = {};
             if (resp.affectedRows == 1) {

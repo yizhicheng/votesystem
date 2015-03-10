@@ -23,9 +23,6 @@ exports.set = function(router) {
         req.body.sys_id = 100000;
         var user = new User();
         user.setProperties(req);
-        //user.sys_id = 100000;
-        //user.nick_name = req.body.username;
-        //user.password = req.body.password;
         
         //组织数据准备入库
         db.insert('user', user.getProperties(), function (resp) {

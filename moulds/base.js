@@ -7,7 +7,7 @@ var Base = function(){
 };
 Base.prototype.setProperties = function(req){
     for(var key in this.obj){
-        this.obj[key] = req.body[key];
+        this.obj[key] = req.body[key] ? req.body[key] : (req.query[key] ? req.query[key] : undefined);
     };
 };
 Base.prototype.getProperties = function(){

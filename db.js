@@ -30,15 +30,16 @@ DataBase.prototype = {
         client.end();
     },
     /**
-     * arguments [1.table name 2.obj[表模型] , 3.callback 回调函数]
+     * 私有方法 格式化 value值 bool，number类型value不操作，stirng型为其添加"" 
+     * 如value='yizhicheng'；
+     * return value='"yizhicheng"';
      */
-    insert: function() {
-        var sql = "INSERT INTO " + arguments[0] ;
+    _form_sql_data: function(argument){
         var keys = [];
         var values = [];
-        for(var key in arguments[1]){
+        for(var key in argument){
             //console.log(arguments[1][key]);
-            var value = arguments[1][key];
+            var value = argument[key];
             if (typeof value == 'function') continue;
             if(value!=undefined){
                 keys.push(key);
@@ -48,7 +49,20 @@ DataBase.prototype = {
                 values.push(value);
             }
         };
-        sql += ' ('+keys.join(',')+') VALUES ('+values.join(',')+')';
+        return {
+            keys: keys,
+            values: values
+        };
+    },
+    /**
+     * arguments [1.table name 2.obj[表模型] , 3.callback 回调函数]
+     */
+    insert: function() {
+        var sql = "INSERT INTO " + arguments[0] ;
+        //var keys = [];
+        //var values = [];
+        var data = this._form_sql_data(arguments[1]);
+        sql += ' ('+data.keys.join(',')+') VALUES ('+data.values.join(',')+')';
         var callback = arguments[2];
         this.query(sql,function(res){
             console.log("INSERT Return ==> ");
@@ -60,20 +74,15 @@ DataBase.prototype = {
     },
     update: function() {
         var sql = "UPDATE " + arguments[0] +" SET ";
-        for(var i=0; i<arguments[2].length; i++){
-            var value = '';
-            if(typeof arguments[2][i] === 'string'){
-                value += "'" +arguments[2][i]+ "'";
-            } else {
-                value += arguments[2][i];
+        var _a = [];
+        for(var key in arguments[1]){
+            var value = arguments[1];
+            if(typeof arguments[1][key] == 'string'){
+                value = '"' + arguments[1][key] + '"';
             }
-            if(i<arguments[2].length-1){
-                sql += arguments[1][i] + "=" +value+","
-            } else {
-                sql += arguments[1][i] + "=" +value;
-            }
+            _a.push(arguments[1][key]+"="+value);
         }
-        sql +=" " + arguments[3];
+        sql +=_a.join(',');
         console.log(sql);
         this.query(sql,function(res){
             console.log("INSERT Return ==> ");
