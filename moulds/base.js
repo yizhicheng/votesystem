@@ -1,5 +1,5 @@
 /**
- * base Ä£ÐÍ
+ * base æ¨¡åž‹
  */
 
 var Base = function(){
