@@ -1,9 +1,18 @@
 var AccountInfo = require('../moulds/accountinfo');
+var Paginate = require('../Paginate');
 exports.set = function(router) {
     router.get('/manageAccount/list', function (req, res, next) {
-        db.query('select * from account_info', function (accounts, fields) {
+        db.query('select count(*) total from account_info', function (accounts, fields) {
             console.log(accounts);
-            res.render('list', { title: '账户列表', accounts: accounts });
+			var pagesize = 10;
+			var page = req.query.q ? req.query.q : 1;
+			var paginate = new Paginate(page, pagesize, accounts[0].total);
+			console.log(paginate);
+			var startIndex = pagesize*(page - 1);
+			db.query('select * from account_info limit '+startIndex+ ' , 10',function(resp, fields){
+				res.render('list', { title: '账户列表', accounts: resp, paginate: paginate });
+				//console.log(resp);
+			});
         });
     });
     router.get('/manageAccount/add', function (req, res, next) {

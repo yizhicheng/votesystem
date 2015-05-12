@@ -1,0 +1,10 @@
+<div class="pagination">
+  <ul>
+    <li><a href="/manageAccount/list?q=<%- paginate.page==1 ? 1 : paginate.prev() %>">Prev</a></li>
+    <% for(var i=0;i<paginate.maxpage;i++) { %>
+	<li><a href="/manageAccount/list?q=<%-(i+1) %>"><%-(i+1) %></a></li>
+	<% }%>
+	
+    <li><a href="/manageAccount/list?q=<%- paginate.page==paginate.maxpage ? paginate.maxpage : paginate.next() %>">Next</a></li>
+  </ul>
+</div>
