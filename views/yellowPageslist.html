@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <!-- Bootstrap -->
+    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet" media="screen">
+    <!-- <link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen"> -->
+</head>
+<body screen_capture_injected="true">
+<% include nav.html %>
+<div class="container-fluid" style="margin-top: 50px;">
+    <div class="row-fluid">
+        <% include left_bar.html %>
+        <div class="span9">
+            <fieldset>
+                <legend>黄页列表</legend>
+                <table class="table table-bordered table-striped" style="width: 80%">
+                    <thead>
+                    <tr>
+                        <td>编号</td>
+                        <td>黄页名称</td>
+                    </tr>
+                    </thead>
+                    <tr>
+                        <td>黄页</td>
+                        <td>黄页</td>
+                    </tr>
+                </table>
+            </fieldset>
+        </div><!--/span-->
+    </div><!--/row-->
+    <hr>
+    <footer>
+        <p>? Company 2013</p>
+    </footer>
+</div><!--/.fluid-container-->
+<script src="/javascripts/jquery-1.7.1.min.js"></script>
+<script src="/javascripts/bootstrap.min.js"></script>
+</body>
+</html>
