@@ -45,7 +45,7 @@
     </fieldset>
     <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
-    <button class="btn btn-primary">Save changes</button>
+    <button class="btn btn-primary" onclick="addAccount(this)">Save changes</button>
   </div>
 </form>
   
@@ -89,5 +89,21 @@
 </div><!--/.fluid-container-->
 <script src="/javascripts/jquery-1.7.1.min.js"></script>
 <script src="/javascripts/bootstrap.min.js"></script>
+<script>
+function addAccount(el){
+    var data = 'account_name='+$("#account_name").val()
+                +'&account_password='+$("#account_password").val()
+                +'&account_description='+$("#account_description").val();
+    $.ajax({
+        url: '/manageAccount/doAdd',
+        data: data,
+        type: 'POST',
+        success: function(resp){
+            alert("添加成功!");
+            location.reload();
+        }
+    });
+}
+</script>
 </body>
 </html>
