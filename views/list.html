@@ -58,6 +58,7 @@
 console.log(location)
 function addAccount(el){
     var data = 'account_name='+$("#account_name").val()
+				+'&account_id='+$("#account_id").val()
                 +'&account_password='+$("#account_password").val()
                 +'&account_description='+$("#account_description").val();
     $.ajax({
@@ -66,7 +67,7 @@ function addAccount(el){
         type: 'POST',
         success: function(resp){
             alert("添加成功!");
-            location.reload();
+            //location.reload();
         }
     });
 }

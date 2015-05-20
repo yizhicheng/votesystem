@@ -1,22 +1,22 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : mysql
-Source Server Version : 50542
+Source Server         : MySql
+Source Server Version : 50621
 Source Host           : localhost:3306
 Source Database       : sec-ms
 
 Target Server Type    : MYSQL
-Target Server Version : 50542
+Target Server Version : 50621
 File Encoding         : 65001
 
-Date: 2015-03-09 17:37:28
+Date: 2015-05-20 10:50:28
 */
 
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- Table structure for `account_info`
+-- Table structure for account_info
 -- ----------------------------
 DROP TABLE IF EXISTS `account_info`;
 CREATE TABLE `account_info` (
@@ -26,39 +26,20 @@ CREATE TABLE `account_info` (
   `account_password` varchar(255) DEFAULT NULL,
   `account_description` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of account_info
 -- ----------------------------
 INSERT INTO `account_info` VALUES ('1', 'qq', '253921698', 'nieyajuan,1991', 'QQ聊天工具账户密码');
-INSERT INTO `account_info` VALUES ('2', '1', '1', '1', '1');
-INSERT INTO `account_info` VALUES ('3', '1', '1', '1', '1');
 INSERT INTO `account_info` VALUES ('4', '烽火IM', 'yizhicheng', 'nieyajuan,1991', '烽火通讯工具');
-INSERT INTO `account_info` VALUES ('5', 'aa', 'aa', 'aa', 'aa');
-INSERT INTO `account_info` VALUES ('6', 'aa', 'aa', 'aa', 'aa');
-INSERT INTO `account_info` VALUES ('7', 'aa', 'aa', 'aa', 'aa');
-INSERT INTO `account_info` VALUES ('8', 'aa', 'aa', 'aa', 'aa');
-INSERT INTO `account_info` VALUES ('9', 'aa', 'aa', 'aa', 'aa');
-INSERT INTO `account_info` VALUES ('10', 'aa', 'aa', 'aa', 'aa');
-INSERT INTO `account_info` VALUES ('11', 'aa', 'aa', 'aa', 'aa');
-INSERT INTO `account_info` VALUES ('12', 'ddd', 'dd', 'dd', 'dd');
-INSERT INTO `account_info` VALUES ('13', '易支撑', 'ss', '易支撑', '易支撑');
 INSERT INTO `account_info` VALUES ('14', '淘宝帐号', '253921698@qq.com', 'nieyajuan,1991', '淘宝登录帐号密码');
-INSERT INTO `account_info` VALUES ('15', 'ss', 'dd', 'dd', 'dd');
-INSERT INTO `account_info` VALUES ('16', 'ddd', 'dd', 'dd', 'dd');
-INSERT INTO `account_info` VALUES ('17', 'dd', 'dd', 's', 's');
-INSERT INTO `account_info` VALUES ('18', '1', '1', '1', '1');
-INSERT INTO `account_info` VALUES ('19', '1', '1', '1', '1');
-INSERT INTO `account_info` VALUES ('20', '1', '1', '1', '1');
-INSERT INTO `account_info` VALUES ('21', '1', '1', '1', '1');
-INSERT INTO `account_info` VALUES ('22', '1', '1', '1', '1');
-INSERT INTO `account_info` VALUES ('23', 'dd', 'dd', 'dd', 'dd');
-INSERT INTO `account_info` VALUES ('24', 'hh', 'hh', 'hh', 'hh');
-INSERT INTO `account_info` VALUES ('25', 'dd', 'd', 'd', 'd');
+INSERT INTO `account_info` VALUES ('26', 'fc160后台`', 'fc160', 'Fc160admin', 'fc160后台');
+INSERT INTO `account_info` VALUES ('35', '微信公众平台', null, 'nieyajuan1991', '微信公众平台开发者中心账户密码');
+INSERT INTO `account_info` VALUES ('36', 'fc160服务器', null, 'FC160com', 'fc160服务器密码账户');
 
 -- ----------------------------
--- Table structure for `user`
+-- Table structure for user
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
