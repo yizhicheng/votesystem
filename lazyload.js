@@ -1,4 +1,4 @@
-/**
+/**可以和入zepto中
  * 图片懒加载和数据懒加载
  * @param  {[String]} el [description]
  * @return {[Function]}    [lazyload(".lazyimg") or $(".lazyimg").lazyload();]
