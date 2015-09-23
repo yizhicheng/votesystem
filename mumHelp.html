@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta content="telephone=no" name="format-detection">
+    <title>妈妈帮</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/mumHelp.css">
+</head>
+<body>
+    <div class="body">
+        <div id="slider" class="swipe" style="visibility:visible;">
+            <div class="swipe-wrap">
+            <!-- 轮播效果-->
+                <figure>
+                    <div>
+                        <img src="images/bg1.png" width="100%" height="100%" />
+                    </div>
+                </figure>
+                <figure>
+                    <div>
+                        <img src="images/bg1.png" width="100%" height="100%" />
+                    </div>          
+                </figure>
+                <figure>
+                    <div>
+                        <img src="images/bg1.png" width="100%" height="100%" />
+                    </div>          
+                </figure>
+                <figure>
+                    <div>
+                        <img src="images/bg1.png" width="100%" height="100%" />
+                    </div>          
+                </figure>
+            </div>
+            <ul class="flag">
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="container">
+            <div class="scroll-h">
+                <a href="#"><img src="images/bang1.png" alt=""></a>
+                <a href="#"><img src="images/bang2.png" alt=""></a>
+                <a href="#"><img src="images/bang3.png" alt=""></a>
+                <a href="#"><img src="images/bang2.png" alt=""></a>
+                <a href="#"><img src="images/bang1.png" alt=""></a>
+            </div>
+        </div>
+        <!-- 分割线 [[ -->
+        <div class="border-top"></div>
+        <!-- ]]分割线 -->
+        <div class="rec">
+            <span></span>
+            小编推荐
+        </div>
+        <!-- list 列表 -->
+        <div class="list">
+            <div class="list-item">
+                <div class="user-name">
+                    <img src="images/face.png" alt="">
+                    秋天的菠菜
+                </div>
+                <div class="title">
+                    <span>活</span>
+                    晒晒宝贝的六一节
+                </div>
+                <div class="content">
+                    若不甘，从今天起，勇敢追梦，将磨难当雕刻。从今天起， 不轻言放弃。太多比赛，逆转就在最后一刻。
+                </div>
+                <div class="img clearfix">
+                    <div class="img-c">
+                        <img src="images/photo.png" alt="">
+                    </div>
+                    <div class="img-c">
+                        <img src="images/photo1.png" alt="">
+                    </div>
+                    <div class="img-c">
+                        <img src="images/photo.png" alt="">
+                    </div>
+                </div>
+                <div class="fun clearfix">
+                    <div class="c">
+                        <span></span>751人
+                    </div>
+                    <div class="d">
+                        <span></span>
+                        20分钟前
+                    </div>
+                    <div class="e">
+                        <span></span>27人
+                    </div>
+                </div>
+                <a href="#" class="jymb">家有萌宝</a>
+            </div>
+            <!-- 分割线 [[ -->
+            <div class="border-top"></div>
+            <!-- ]]分割线 -->
+            <div class="list-item">
+                <div class="user-name">
+                    <img src="images/face.png" alt="">
+                    秋天的菠菜
+                </div>
+                <div class="title">
+                    <span>活</span>
+                    晒晒宝贝的六一节
+                </div>
+                <div class="content">
+                    若不甘，从今天起，勇敢追梦，将磨难当雕刻。从今天起， 不轻言放弃。太多比赛，逆转就在最后一刻。
+                </div>
+                <div class="img clearfix">
+                    <div class="img-c">
+                        <img src="images/photo.png" alt="">
+                    </div>
+                    <div class="img-c">
+                        <img src="images/photo1.png" alt="">
+                    </div>
+                    <div class="img-c">
+                        <img src="images/photo.png" alt="">
+                    </div>
+                </div>
+                <div class="fun clearfix">
+                    <div class="c">
+                        <span></span>751人
+                    </div>
+                    <div class="d">
+                        <span></span>
+                        20分钟前
+                    </div>
+                    <div class="e">
+                        <span></span>27人
+                    </div>
+                </div>
+                <a href="#" class="jymb">家有萌宝</a>
+            </div>
+            <!-- 分割线 [[ -->
+            <div class="border-top"></div>
+            <!-- ]]分割线 -->
+        </div>   
+    </div>
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script src="js/swipe.js"></script>
+    <script>
+    var slider = Swipe(document.getElementById('slider'), {
+        auto: 3000,
+        continuous: true,
+        callback: function(pos) {
+            console.log(pos);
+            $("li").eq(pos).addClass("active").siblings().removeClass("active");
+        }
+    });
+    </script>
+</body>
+</html>
