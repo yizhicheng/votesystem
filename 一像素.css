@@ -1,0 +1,7 @@
+.border-top {
+width: 15rem;
+height: 1px;
+margin: 0 auto;
+background: url("../images/border_top.png") 0 bottom repeat-x;
+background-size: 100% 1px;
+}
